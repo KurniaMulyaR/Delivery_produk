@@ -1,0 +1,51 @@
+  <div class="tab-pane fade show active" id="show-item" role="tabpanel" aria-labelledby="home-tab">
+      <!-- DataTales Example -->
+       <div class="card-header py-3">
+           <!-- Button trigger modal -->
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+               <i class="fas fa-plus"></i>
+           </button>
+
+           <h4 class="pt-4">Tanggal : <%= delivery.tanggal.toLocaleString().split(',')[0] %></h4>
+       </div>      
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTableActivity" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>SM</th>
+                            <th>Nama Mould</th>
+                            <th>Keterangan</th>
+                            <th>Kendaraan</th>
+                            <th>Status</th>
+                            <th>Tujuan</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < schedule.length; i++){ %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= schedule[i].sm %></td>
+                            <td><%= schedule[i].name %></td>
+                            <td><%= schedule[i].keterangan %> | <%= schedule[i].driver %></td>
+                            <td><%= schedule[i].kendaraan %></td>
+                            <td><%= schedule[i].status %></td>
+                            <td><%= schedule[i].tujuan %></td>
+                            <td>
+                                <form
+                                    action="/admin/delivery/<%= deliveryId %>/schedule/<%= schedule[i].id %>?_method=DELETE"
+                                    method="POST">
+                                     <a href="/admin/delivery/schedule/<%= schedule[i].id %>" type="button"
+                                      class="button-update btn btn-info btn-circle btn-sm">
+                                      <i class="fas fa-edit"></i></a>
+                                    
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+                                            class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>

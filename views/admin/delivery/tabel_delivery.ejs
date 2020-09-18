@@ -1,0 +1,51 @@
+  <div class="tab-pane fade show active" id="show-item" role="tabpanel" aria-labelledby="home-tab">
+      <div class="card-header py-3">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+              <i class="fas fa-plus"></i> 
+          </button>
+
+      </div>
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4 mt-3">
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                              <th>No</th>
+                              <th>Tanggal</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td class="bg-success"></td>
+                            <td>test</td>
+                        </tr>
+                      </tbody>
+                      <tbody>
+                          <% for(let i = 0; i < delivery.length; i++){ %>
+                          <tr>
+                              <td><%= i + 1 %></td>
+                              <td><%= delivery[i].tanggal.toLocaleString().split(',')[0] %></td>
+                              <td>
+                                  <form action="/admin/delivery/<%= delivery[i].id %>?_method=DELETE" method="POST">
+                                    <a href="/admin/delivery/show-schedule/<%= delivery[i].id %>"
+                                        class="btn btn-success btn-circle btn-sm"><i class="fas fa-table"></i></a>
+                                      <a href="javascript:void()" type="button"
+                                          class="button-update btn btn-info btn-circle btn-sm"
+                                          data-id="<%= delivery[i].id %>" data-tanggal="<%= delivery[i].tanggal %>">
+                                          <i class="fas fa-edit"></i></a>
+                                      <button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+                                              class="fas fa-trash"></i></button>
+                                  </form>
+                              </td>
+                          </tr>
+                          <% } %>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>

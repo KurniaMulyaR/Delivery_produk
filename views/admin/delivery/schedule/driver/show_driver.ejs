@@ -1,0 +1,51 @@
+  <div class="tab-pane fade show active" id="show-schedule">
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4 mt-3">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-5">
+                      <form action="/admin/delivery/schedule/add/driver" method="POST">
+                          <div class="form-group">
+                              <label for="kendaraan">Kendaraan</label>
+                              <input type="text" class="form-control" id="kendaraan" name="kendaraan" placeholder="Enter Kendaraan" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="nopol">Nomor Polisi</label>
+                              <input type="text" class="form-control" id="nopol" name="nopol"
+                                  placeholder="Enter Nomor Polisi" required>
+                          </div>
+                           <div class="form-group">
+                              <label for="name">Status</label>
+                              <select name="status" class="form-control">
+                                  <option value="">-- Status --</option>
+                                  <option value="Tunggu">Tunggu</option>
+                                  <option value="On The Way">On The Way</option>
+                                  <option value="Finish">Finish</option>
+                              </select>
+                          </div>
+
+                          <input type="hidden" name="scheduleId" value="<%= scheduleId %>">
+                          <button type="submit" class="btn btn-primary">Save</button>
+                      </form>
+                  </div>
+                  <div class="col-md-7">
+                      <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTableActivity" width="100%" cellspacing="0">
+                              <thead>
+                                  <tr>
+                                      <th>No</th>
+                                      <th>SM</th>
+                                      <th>Nama Mould</th>
+                                      <th>Keterangan</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
